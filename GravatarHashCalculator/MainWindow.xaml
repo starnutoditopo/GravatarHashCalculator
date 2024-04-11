@@ -1,0 +1,19 @@
+﻿<Window x:Class="GravatarHashCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:localConverters="clr-namespace:GravatarHashCalculator.ValueConverters"
+        mc:Ignorable="d"
+        Title="Gravatar hash calculator" Height="150" Width="600">
+    <StackPanel>
+        <DockPanel LastChildFill="True">
+            <Label DockPanel.Dock="Left" MaxWidth="200">Email address:</Label>
+            <TextBox x:Name="emailAddress" >your.email@address.com</TextBox>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Left" LastChildFill="True">
+            <Label MaxWidth="200">Gravatar hash:</Label>
+            <TextBox IsReadOnly="True" Text="{Binding Source={x:Reference Name=emailAddress}, Path=Text, Converter={localConverters:EmailToGravatarHashConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+        </DockPanel>
+    </StackPanel>
+</Window>
